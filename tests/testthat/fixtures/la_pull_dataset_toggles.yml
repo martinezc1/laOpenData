@@ -1,0 +1,114 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://data.lacity.org/resource/29fd-3paw.json?%24limit=2
+  response:
+    status: 200
+    headers:
+      server: nginx
+      date: Fri, 10 Apr 2026 14:08:00 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      connection: keep-alive
+      access-control-allow-origin: '*'
+      etag: '"Z29sZi4xMzAyNV8xXzI3bnl2UzdXZmJiejc1RDRBWjFTTWJ3c2lKZ1lJ---gzipIbtDYUxCvXZFXWZFrnTvcAUbSdw--gzip--gzip"'
+      x-soda2-fields: '["serial_number","activity_date","facility_name","score","grade","service_code","service_description","employee_id","facility_address","facility_city","facility_id","facility_state","facility_zip","owner_id","owner_name","pe_description","program_element_pe","program_name","program_status","record_id"]'
+      x-soda2-types: '["text","floating_timestamp","text","number","text","number","text","text","text","text","text","text","text","text","text","text","number","text","text","text"]'
+      x-soda2-data-out-of-date: 'false'
+      x-soda2-truth-last-modified: Mon, 10 Sep 2018 23:58:22 GMT
+      x-soda2-secondary-last-modified: Mon, 10 Sep 2018 23:58:22 GMT
+      last-modified: Mon, 10 Sep 2018 23:58:22 GMT
+      vary: Accept-Encoding
+      content-encoding: gzip
+      strict-transport-security: max-age=31536000; includeSubDomains
+      x-socrata-requestid: 3c77a5b6b822069f0faa2f5c14568578
+    body:
+      string: |
+        [{"serial_number":"DAJ00E07B","activity_date":"2017-12-29T00:00:00.000","facility_name":"HABITAT COFFEE SHOP","score":"95","grade":"A","service_code":"1","service_description":"ROUTINE INSPECTION","employee_id":"EE0000923","facility_address":"3708 N EAGLE ROCK BLVD","facility_city":"LOS ANGELES","facility_id":"FA0170465","facility_state":"CA","facility_zip":"90065","owner_id":"OW0178123","owner_name":"GLASSELL COFFEE SHOP LLC","pe_description":"RESTAURANT (0-30) SEATS MODERATE RISK","program_element_pe":"1631","program_name":"HABITAT COFFEE SHOP","program_status":"ACTIVE","record_id":"PR0160774"}
+        ,{"serial_number":"DAQOKRFZB","activity_date":"2017-12-29T00:00:00.000","facility_name":"REILLY'S","score":"92","grade":"A","service_code":"1","service_description":"ROUTINE INSPECTION","employee_id":"EE0000633","facility_address":"100 WORLD WAY # 120","facility_city":"LOS ANGELES","facility_id":"FA0244690","facility_state":"CA","facility_zip":"90045","owner_id":"OW0208441","owner_name":"AREAS SKYVIEW LAX JV, LLC","pe_description":"RESTAURANT (0-30) SEATS MODERATE RISK","program_element_pe":"1631","program_name":"REILLY'S","program_status":"ACTIVE","record_id":"PR0193026"}]
+  recorded_at: 2026-04-10 14:08:00
+- request:
+    method: GET
+    uri: https://data.lacity.org/resource/29fd-3paw.json?%24limit=2
+  response:
+    status: 200
+    headers:
+      server: nginx
+      date: Fri, 10 Apr 2026 14:08:19 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      connection: keep-alive
+      access-control-allow-origin: '*'
+      etag: '"Z29sZi4xMzAyNV8xXzI3bnl2UzdXZmJiejc1RDRBWjFTTWJ3c2lKZ1lJ---gzipIbtDYUxCvXZFXWZFrnTvcAUbSdw--gzip--gzip"'
+      x-soda2-fields: '["serial_number","activity_date","facility_name","score","grade","service_code","service_description","employee_id","facility_address","facility_city","facility_id","facility_state","facility_zip","owner_id","owner_name","pe_description","program_element_pe","program_name","program_status","record_id"]'
+      x-soda2-types: '["text","floating_timestamp","text","number","text","number","text","text","text","text","text","text","text","text","text","text","number","text","text","text"]'
+      x-soda2-data-out-of-date: 'false'
+      x-soda2-truth-last-modified: Mon, 10 Sep 2018 23:58:22 GMT
+      x-soda2-secondary-last-modified: Mon, 10 Sep 2018 23:58:22 GMT
+      last-modified: Mon, 10 Sep 2018 23:58:22 GMT
+      vary: Accept-Encoding
+      content-encoding: gzip
+      strict-transport-security: max-age=31536000; includeSubDomains
+      x-socrata-requestid: 81fb245ab3110787d793df82523afb9c
+    body:
+      string: |
+        [{"serial_number":"DAJ00E07B","activity_date":"2017-12-29T00:00:00.000","facility_name":"HABITAT COFFEE SHOP","score":"95","grade":"A","service_code":"1","service_description":"ROUTINE INSPECTION","employee_id":"EE0000923","facility_address":"3708 N EAGLE ROCK BLVD","facility_city":"LOS ANGELES","facility_id":"FA0170465","facility_state":"CA","facility_zip":"90065","owner_id":"OW0178123","owner_name":"GLASSELL COFFEE SHOP LLC","pe_description":"RESTAURANT (0-30) SEATS MODERATE RISK","program_element_pe":"1631","program_name":"HABITAT COFFEE SHOP","program_status":"ACTIVE","record_id":"PR0160774"}
+        ,{"serial_number":"DAQOKRFZB","activity_date":"2017-12-29T00:00:00.000","facility_name":"REILLY'S","score":"92","grade":"A","service_code":"1","service_description":"ROUTINE INSPECTION","employee_id":"EE0000633","facility_address":"100 WORLD WAY # 120","facility_city":"LOS ANGELES","facility_id":"FA0244690","facility_state":"CA","facility_zip":"90045","owner_id":"OW0208441","owner_name":"AREAS SKYVIEW LAX JV, LLC","pe_description":"RESTAURANT (0-30) SEATS MODERATE RISK","program_element_pe":"1631","program_name":"REILLY'S","program_status":"ACTIVE","record_id":"PR0193026"}]
+  recorded_at: 2026-04-10 14:08:19
+- request:
+    method: GET
+    uri: https://data.lacity.org/resource/29fd-3paw.json?%24limit=2
+  response:
+    status: 200
+    headers:
+      server: nginx
+      date: Fri, 10 Apr 2026 14:08:36 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      connection: keep-alive
+      access-control-allow-origin: '*'
+      etag: '"Z29sZi4xMzAyNV8xXzI3bnl2UzdXZmJiejc1RDRBWjFTTWJ3c2lKZ1lJ---gzipIbtDYUxCvXZFXWZFrnTvcAUbSdw--gzip--gzip"'
+      x-soda2-fields: '["serial_number","activity_date","facility_name","score","grade","service_code","service_description","employee_id","facility_address","facility_city","facility_id","facility_state","facility_zip","owner_id","owner_name","pe_description","program_element_pe","program_name","program_status","record_id"]'
+      x-soda2-types: '["text","floating_timestamp","text","number","text","number","text","text","text","text","text","text","text","text","text","text","number","text","text","text"]'
+      x-soda2-data-out-of-date: 'false'
+      x-soda2-truth-last-modified: Mon, 10 Sep 2018 23:58:22 GMT
+      x-soda2-secondary-last-modified: Mon, 10 Sep 2018 23:58:22 GMT
+      last-modified: Mon, 10 Sep 2018 23:58:22 GMT
+      vary: Accept-Encoding
+      content-encoding: gzip
+      strict-transport-security: max-age=31536000; includeSubDomains
+      x-socrata-requestid: 178bcdfaf148faa790a8faca672383b3
+    body:
+      string: |
+        [{"serial_number":"DAJ00E07B","activity_date":"2017-12-29T00:00:00.000","facility_name":"HABITAT COFFEE SHOP","score":"95","grade":"A","service_code":"1","service_description":"ROUTINE INSPECTION","employee_id":"EE0000923","facility_address":"3708 N EAGLE ROCK BLVD","facility_city":"LOS ANGELES","facility_id":"FA0170465","facility_state":"CA","facility_zip":"90065","owner_id":"OW0178123","owner_name":"GLASSELL COFFEE SHOP LLC","pe_description":"RESTAURANT (0-30) SEATS MODERATE RISK","program_element_pe":"1631","program_name":"HABITAT COFFEE SHOP","program_status":"ACTIVE","record_id":"PR0160774"}
+        ,{"serial_number":"DAQOKRFZB","activity_date":"2017-12-29T00:00:00.000","facility_name":"REILLY'S","score":"92","grade":"A","service_code":"1","service_description":"ROUTINE INSPECTION","employee_id":"EE0000633","facility_address":"100 WORLD WAY # 120","facility_city":"LOS ANGELES","facility_id":"FA0244690","facility_state":"CA","facility_zip":"90045","owner_id":"OW0208441","owner_name":"AREAS SKYVIEW LAX JV, LLC","pe_description":"RESTAURANT (0-30) SEATS MODERATE RISK","program_element_pe":"1631","program_name":"REILLY'S","program_status":"ACTIVE","record_id":"PR0193026"}]
+  recorded_at: 2026-04-10 14:08:36
+- request:
+    method: GET
+    uri: https://data.lacity.org/resource/29fd-3paw.json?%24limit=2
+  response:
+    status: 200
+    headers:
+      server: nginx
+      date: Fri, 10 Apr 2026 14:08:55 GMT
+      content-type: application/json;charset=utf-8
+      transfer-encoding: chunked
+      connection: keep-alive
+      access-control-allow-origin: '*'
+      etag: '"Z29sZi4xMzAyNV8xXzI3bnl2UzdXZmJiejc1RDRBWjFTTWJ3c2lKZ1lJ---gzipIbtDYUxCvXZFXWZFrnTvcAUbSdw--gzip--gzip"'
+      x-soda2-fields: '["serial_number","activity_date","facility_name","score","grade","service_code","service_description","employee_id","facility_address","facility_city","facility_id","facility_state","facility_zip","owner_id","owner_name","pe_description","program_element_pe","program_name","program_status","record_id"]'
+      x-soda2-types: '["text","floating_timestamp","text","number","text","number","text","text","text","text","text","text","text","text","text","text","number","text","text","text"]'
+      x-soda2-data-out-of-date: 'false'
+      x-soda2-truth-last-modified: Mon, 10 Sep 2018 23:58:22 GMT
+      x-soda2-secondary-last-modified: Mon, 10 Sep 2018 23:58:22 GMT
+      last-modified: Mon, 10 Sep 2018 23:58:22 GMT
+      vary: Accept-Encoding
+      content-encoding: gzip
+      strict-transport-security: max-age=31536000; includeSubDomains
+      x-socrata-requestid: 7b120d4678a291a259de9c8c37404a6e
+    body:
+      string: |
+        [{"serial_number":"DAJ00E07B","activity_date":"2017-12-29T00:00:00.000","facility_name":"HABITAT COFFEE SHOP","score":"95","grade":"A","service_code":"1","service_description":"ROUTINE INSPECTION","employee_id":"EE0000923","facility_address":"3708 N EAGLE ROCK BLVD","facility_city":"LOS ANGELES","facility_id":"FA0170465","facility_state":"CA","facility_zip":"90065","owner_id":"OW0178123","owner_name":"GLASSELL COFFEE SHOP LLC","pe_description":"RESTAURANT (0-30) SEATS MODERATE RISK","program_element_pe":"1631","program_name":"HABITAT COFFEE SHOP","program_status":"ACTIVE","record_id":"PR0160774"}
+        ,{"serial_number":"DAQOKRFZB","activity_date":"2017-12-29T00:00:00.000","facility_name":"REILLY'S","score":"92","grade":"A","service_code":"1","service_description":"ROUTINE INSPECTION","employee_id":"EE0000633","facility_address":"100 WORLD WAY # 120","facility_city":"LOS ANGELES","facility_id":"FA0244690","facility_state":"CA","facility_zip":"90045","owner_id":"OW0208441","owner_name":"AREAS SKYVIEW LAX JV, LLC","pe_description":"RESTAURANT (0-30) SEATS MODERATE RISK","program_element_pe":"1631","program_name":"REILLY'S","program_status":"ACTIVE","record_id":"PR0193026"}]
+  recorded_at: 2026-04-10 14:08:55
+recorded_with: VCR-vcr/2.1.0

@@ -8,7 +8,7 @@ la_list_datasets()
 }
 \value{
 A tibble of available datasets, including generated `key`, dataset
-  `uid`, and dataset `name`.
+  `id`, and dataset `name`.
 }
 \description{
 Retrieves the current Open NY catalog and returns datasets available

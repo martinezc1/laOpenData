@@ -30,7 +30,11 @@ Suggests:
     curl,
     knitr,
     ggplot2,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 3.0.0),
+    tidyr,
+    vcr (>= 0.6.0),
+    webmockr
 URL: https://martinezc1.github.io/laOpenData/, https://github.com/martinezc1/laOpenData
 BugReports: https://github.com/martinezc1/laOpenData/issues
 VignetteBuilder: knitr

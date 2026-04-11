@@ -1,0 +1,162 @@
+---
+title: "Getting Started with laOpenData"
+output: rmarkdown::html_vignette
+author: "Christian Martinez"
+vignette: >
+  %\VignetteIndexEntry{Getting Started with laOpenData}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+library(laOpenData)
+library(ggplot2)
+library(dplyr)
+```
+
+## Introduction
+
+Welcome to the `laOpenData` package, an R package dedicated to helping R users connect to the [Los Angeles Open Data Portal](https://data.lacity.org/)!
+
+The `laOpenData` package provides a streamlined interface for accessing Los Angeles' vast open data resources. It connects directly to official City of Los Angeles open data portals, including datasets hosted across Socrata-powered city domains, helping users bridge the gap between raw city APIs and tidy data analysis. This package is part of a broader ecosystem of open data tools designed to provide a consistent interface across cities. It does this in two ways:
+
+### The `la_pull_dataset()` function
+
+The primary way to pull data in this package is the `la_pull_dataset()` function, which works in tandem with `la_list_datasets()`. You do not need to know anything about API keys or authentication.
+
+The first step would be to call the `la_list_datasets()` to see what datasets are in the list and available to use in the `la_pull_dataset()` function. This provides information for thousands of datasets found on the portal.
+
+```{r la-list-datasets}
+la_list_datasets() |> head()
+```
+
+The output includes columns such as the dataset title, description, and link to the source. The most important fields are the dataset `key` and `id`. You need **either** in order to use the `la_pull_dataset()` function. You can put **either** the key value or id value into the `dataset =` filter inside of `la_pull_dataset()`.
+
+For instance, if we want to pull the dataset `Building and Safety - Vacant Building Abatement`, we can use either of the methods below:
+
+```{r la-vacant-pull}
+la_building_safety_vacant <- la_pull_dataset(
+  dataset = "q3ak-s5hy", limit = 2, timeout_sec = 90)
+
+la_building_safety_vacant <- la_pull_dataset(
+  dataset = "building_and_safety_vacant_building_abatement", limit = 2, timeout_sec = 90)
+```
+
+No matter if we put the `id` or the `key` as the value for `dataset =`, we successfully get the data!
+
+### The `la_any_dataset()` function
+
+The easiest workflow is to use `la_list_datasets()` together with `la_pull_dataset()`.
+
+In the event that you have a particular dataset you want to use in R that is not in the list, you can use the `la_any_dataset()`. The only requirement is the dataset’s API endpoint (a URL provided by the Los Angeles Open Data portal). Here are the steps to get it:
+
+1. On the Los Angeles Open Data Portal, go to the dataset you want to work with.
+2. Click on "Export" (next to the actions button on the right hand side).
+3. Click on "API Endpoint".
+4. Click on "SODA2" for "Version".
+5. Copy the API Endpoint.
+
+Below is an example of how to use the `la_any_dataset()` once the API endpoint has been discovered, that will pull the same data as the `la_pull_dataset()` example:
+
+```{text}
+la_motor_vehicle_collisions_data <- la_any_dataset(json_link = "https://data.lacity.org/resource/q3ak-s5hy.json", limit = 2)
+```
+
+### Rule of Thumb
+
+While both functions provide access to Los Angeles Open Data, they serve slightly different purposes.
+
+In general:
+
+- Use `la_pull_dataset()` when the dataset is available in `la_list_datasets()`
+- Use `la_any_dataset()` when working with datasets outside the catalog
+
+Together, these functions allow users to either quickly access the datasets or flexibly query any dataset available on the Los Angeles Open Data portal.
+
+## Real World Example
+
+Los Angeles has a lot of people, and just as many businesses, and the list of active businesses in LA is contained in the dataset, [found here](https://data.lacity.org/Administration-Finance/Listing-of-Active-Businesses/6rrh-rzua/about_data). In R, the `laOpenData` package can be used to pull this data directly.
+
+By using the `la_pull_dataset()` function, we can gather information on these businesses, and filter based upon any of the columns inside the dataset.
+
+Let's take an example of 3 requests that occur in the actual city of Los Angeles. The `la_pull_dataset()` function can filter based off any of the columns in the dataset. To filter, we add `filters = list()` and put whatever filters we would like inside. From our `colnames` call before, we know that there is a column called "city" which we can use to accomplish this.
+
+```{r filter-location}
+
+la_businesses <- la_pull_dataset(dataset = "6rrh-rzua",limit = 3, timeout_sec = 90, filters = list(city = "LOS ANGELES"))
+la_businesses
+
+# Checking to see the filtering worked
+la_businesses |>
+  distinct(city)
+```
+
+Success! From calling the `la_businesses` dataset we see there are only 3 rows of data, and from the `distinct()` call we see the only location featured in our dataset is LOS ANGELES.
+
+One of the strongest qualities this function has is its ability to filter based off of multiple columns. Let's put everything together and get a dataset of *50* businesses that occur in LOS ANGELES in council district 8.
+
+```{r filter-la-eight}
+# Creating the dataset
+la_businesses_8 <- la_pull_dataset(dataset = "6rrh-rzua", limit = 50, timeout_sec = 90, filters = list(city = "LOS ANGELES", council_district = 8))
+
+# Calling head of our new dataset
+la_businesses_8 |>
+  slice_head(n = 6)
+
+# Quick check to make sure our filtering worked
+la_businesses_8 |>
+  summarize(rows = n())
+
+la_businesses_8 |>
+  distinct(city)
+
+la_businesses_8 |>
+  distinct(council_district)
+```
+
+We successfully created our dataset that contains 50 requests regarding the businesses in district 8 of LA.
+
+### Mini analysis
+
+Now that we have successfully pulled the data and have it in R, let's do a mini analysis on using the `primary_naics_description` column, to figure out what are the main types of businesses
+
+To do this, we will create a bar graph of the business types.
+
+```{r complaint-type-graph, fig.alt="Bar chart showing the frequency of business types in LA in district 8.", fig.cap="Bar chart showing the frequency of business types in LA in district 8.", fig.height=5, fig.width=7}
+# Visualizing the distribution, ordered by frequency
+la_businesses_8 |>
+  count(primary_naics_description) |>
+  ggplot(aes(
+    x = n,
+    y = reorder(primary_naics_description, n)
+  )) +
+  geom_col(fill = "steelblue") +
+  theme_minimal() +
+  labs(
+    title = "Top 50 Business Types in District 8 of LA",
+    x = "Number of Businesses",
+    y = "Business Type"
+  )
+```
+
+This graph shows us not only *which* businesses are in the area, but *how many* of each there are.
+
+## Summary
+
+The `laOpenData` package serves as a robust interface for the Los Angeles Open Data portal, streamlining the path from raw city APIs to actionable insights. By abstracting the complexities of data acquisition—such as pagination, type-casting, and complex filtering—it allows users to focus on analysis rather than data engineering.
+
+As demonstrated in this vignette, the package provides a seamless workflow for targeted data retrieval, automated filtering, and rapid visualization.
+
+## How to Cite
+
+If you use this package for research or educational purposes, please cite it as follows:
+
+Martinez C (2026). laOpenData: Convenient Access to Los Angeles Open Data API Endpoints. R package version 0.1.0, <https://martinezc1.github.io/laOpenData/>.

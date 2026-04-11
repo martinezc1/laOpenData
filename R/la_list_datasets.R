@@ -6,7 +6,7 @@
 #' Keys are generated from dataset names using `janitor::make_clean_names()`.
 #'
 #' @return A tibble of available datasets, including generated `key`, dataset
-#'   `uid`, and dataset `name`.
+#'   `id`, and dataset `name`.
 #' @examples
 #' if (interactive() && curl::has_internet()) {
 #'   la_list_datasets()
