@@ -32,5 +32,5 @@
 ^LICENSE\.md$
 ^_pkgdown\.yml$
 ^cran-comments\.md$
-^nycOpenData\.Rproj$
+^laOpenData\.Rproj$
 ^README\.Rmd$
